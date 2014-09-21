@@ -42,7 +42,7 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Return the inverse of an Matrix object, calculating the inverse if it is not cached, and returning the cached value if it is already stored
+## Return the inverse of the passed matrix, calculating the inverse if it is not cached, and returning the cached value if it is already stored
 
 cacheSolve <- function(x, ...) {
   inverseMatrix <- x$getInverse()
