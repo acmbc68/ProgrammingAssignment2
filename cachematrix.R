@@ -8,11 +8,11 @@
 
 ## cachematrix.R
 ##
-## Create a cache marix object that can be used to
-## repeatably solve the inverse of the marix, but only
-## calculates the inverse once.
+## Create a cached matrix object that to solve 
+## the inverse of a matrix, only calculating the inverse the first time, 
+## and using cached data from then on
 ##
-## Usage:
+## how to use - 
 ##  aMatrix <- matrix(c(1, 2, 2, 1), nrow=2, ncol=2)
 ##  cachedMatrix <- makeCacheMatrix(aMatrix)
 ##  cacheSolve(cachedMatrix)
@@ -20,8 +20,8 @@
 ##  cachedMatrix$set(M)      # Change the matrix being cached.
 ##  aMatrix <- cachedMatrix$get()  # Returns the matrix being cached.
 ##
-##  cacheMatrix$setInverse(solve(data, ...)) # Function (Private) which contains the cached inverse matrix of x
-##  cacheMatrix$getInverse()                 # Function (Private) to get the cached inverse of x
+##  cacheMatrix$setInverse(solve(data, ...)) # Function (Private scope) which contains the cached inverse matrix of x
+##  cacheMatrix$getInverse()                 # Function (Private scope) to get and return the cached inverse of x
 
 ## Create a cached Matrix object for an invertable matrix.
 
@@ -42,7 +42,7 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Return the inverse of an Matrix object
+## Return the inverse of an Matrix object, calculating the inverse if it is not cached, and returning the cached value if it is already stored
 
 cacheSolve <- function(x, ...) {
   inverseMatrix <- x$getInverse()
